@@ -9,8 +9,8 @@ import Welcome from "./components/Welcome";
 function App() {
   return (
     <div>
-      <Welcome />
       <MyNav />
+      <Welcome />
       <AllTheBooks />
       <MyFooter />
     </div>

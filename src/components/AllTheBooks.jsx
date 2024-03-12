@@ -11,8 +11,8 @@ function AllTheBooks() {
       <Row>
         {items.map((book, i) => {
           return (
-            <Col xs={12} md={6} lg={3} className="my-3">
-              <Card key={i} style={{ height: "100%" }}>
+            <Col xs={12} md={6} lg={3} className="my-3" key={book.asin}>
+              <Card style={{ height: "100%" }}>
                 <Card.Img variant="top" src={book.img} style={{ height: "15rem", objectFit: "contain" }} />
                 <Card.Body>
                   <Card.Title>{book.title}</Card.Title>

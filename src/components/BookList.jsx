@@ -4,13 +4,11 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 function BookList(props) {
-  const books = props.books;
-
   return (
     <Container fluid>
       <Row>
-        {books.map(function (book, index) {
-          return <SingleBook key={index} book={book} />;
+        {props.books.map(function (book, index) {
+          return <SingleBook key={book.asin} book={book} />;
         })}
       </Row>
     </Container>

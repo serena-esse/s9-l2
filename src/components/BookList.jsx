@@ -7,7 +7,7 @@ function BookList(props) {
   return (
     <Container fluid>
       <Row>
-        {props.books.map(function (book, index) {
+        {props.books.map(function (book) {
           return <SingleBook key={book.asin} book={book} />;
         })}
       </Row>

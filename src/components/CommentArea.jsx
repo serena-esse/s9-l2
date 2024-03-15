@@ -37,6 +37,30 @@ class CommentArea extends Component {
     }
   };
 
+  deleteComment = async (commentId) => {
+    try {
+      const response = await fetch(API_URL + commentId, {
+        method: "DELETE",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWUxYTVkYTRjNTllYzAwMTk5MGQ3MmEiLCJpYXQiOjE3MTA0MTY2NjMsImV4cCI6MTcxMTYyNjI2M30.pvfes2FP1iRg4GHdSLyIg94si5qm6YBibaykPNHEuQg",
+        },
+      });
+
+      if (response.ok) {
+        // Rimuovi il commento dalla lista dei commenti nello stato
+        this.setState((prevState) => ({
+          comments: prevState.comments.filter((comment) => comment._id !== commentId),
+        }));
+        console.log("Commento eliminato con successo:", commentId);
+      } else {
+        console.error("Errore durante la cancellazione del commento:", response.status);
+      }
+    } catch (error) {
+      console.error("Errore durante la cancellazione del commento:", error);
+    }
+  };
+
   componentDidMount() {
     this.getComments();
   }
@@ -45,7 +69,7 @@ class CommentArea extends Component {
     return (
       <div>
         <AddComment asin={this.props.asin} />
-        <CommentsList comments={this.state.comments} />
+        <CommentsList comments={this.state.comments} deleteComment={this.deleteComment} />
       </div>
     );
   }

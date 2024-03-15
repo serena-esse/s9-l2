@@ -2,20 +2,15 @@ import { Component } from "react";
 import SingleComment from "./SingleComment";
 
 class CommentsList extends Component {
-  showComment = (clicked) => {
-    return <SingleComment click={clicked.comment} />;
-  };
-
   render() {
     return (
       <ul>
-        {this.props.comments.map((el, n) => {
-          return (
-            <li key={el.elementId + n} onClick={() => this.showComment(el)}>
-              {el.comment} - {el.rate} | {el.elementId}
-            </li>
-          );
-        })}
+        {this.props.comments.map((comment, index) => (
+          <li key={comment._id}>
+            {comment.comment} | {comment.rate} | {comment.author}
+            <button onClick={() => this.props.deleteComment(comment._id)}>Delete</button>
+          </li>
+        ))}
       </ul>
     );
   }

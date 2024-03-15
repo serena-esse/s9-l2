@@ -48,7 +48,7 @@ class AddComment extends Component {
             value={this.state.rate}
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="dark" type="submit">
           Commenta
         </Button>
       </Form>

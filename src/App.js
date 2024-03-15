@@ -10,13 +10,14 @@ import BookList from "./components/BookList";
 import fantasyBooks from "./books/fantasy.json";
 import horrorBooks from "./books/horror.json";
 import CommentArea from "./components/CommentArea";
+import scifiBooks from "./books/scifi.json";
 
 function App() {
   return (
     <div>
       <MyNav />
       <Welcome />
-      <BookList books={fantasyBooks} />
+      <BookList books={scifiBooks} />
 
       <MyFooter />
     </div>

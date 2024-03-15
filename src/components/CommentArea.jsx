@@ -30,7 +30,7 @@ class CommentArea extends Component {
         this.setState({ comments: commentsData });
         console.log(response);
       } else {
-        console.error("Errore durante la richiesta:", response.status);
+        console.error("Errore durante la richiesta::", response.status);
       }
     } catch (error) {
       console.error("Errore nella richiesta:", error);

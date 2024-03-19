@@ -1,31 +1,23 @@
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
-import items from "../books/fantasy.json";
+import { Card, Col, Row } from "react-bootstrap";
+import fantasy from "../data/fantasy.json";
 
-function AllTheBooks() {
+const AllTheBooks = () => {
   return (
-    <Container>
-      <Row>
-        {items.map((book, i) => {
-          return (
-            <Col xs={12} md={6} lg={3} className="my-3" key={book.asin}>
-              <Card style={{ height: "100%" }}>
-                <Card.Img variant="top" src={book.img} style={{ height: "15rem", objectFit: "contain" }} />
-                <Card.Body>
-                  <Card.Title>{book.title}</Card.Title>
-                  <Card.Text>{book.price}€</Card.Text>
-                  <Button variant="dark">Acquista</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          );
-        })}
-      </Row>
-    </Container>
+    <Row className="g-2">
+      {fantasy.map((book) => {
+        return (
+          <Col xs={12} md={4} key={book.asin}>
+            <Card className="book-cover d-flex flex-column">
+              <Card.Img variant="top" src={book.img} />
+              <Card.Body>
+                <Card.Title>{book.title}</Card.Title>
+              </Card.Body>
+            </Card>
+          </Col>
+        );
+      })}
+    </Row>
   );
-}
+};
 
 export default AllTheBooks;

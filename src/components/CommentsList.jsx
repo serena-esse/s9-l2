@@ -1,19 +1,12 @@
-import { Component } from "react";
+import { ListGroup } from "react-bootstrap";
 import SingleComment from "./SingleComment";
 
-class CommentsList extends Component {
-  render() {
-    return (
-      <ul>
-        {this.props.comments.map((comment, index) => (
-          <li key={comment._id}>
-            {comment.comment} | {comment.rate} | {comment.author}
-            <button onClick={() => this.props.deleteComment(comment._id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-    );
-  }
-}
+const CommentList = ({ commentsToShow }) => (
+  <ListGroup style={{ color: "black" }} className="mt-2">
+    {commentsToShow.map((comment) => (
+      <SingleComment comment={comment} key={comment._id} />
+    ))}
+  </ListGroup>
+);
 
-export default CommentsList;
+export default CommentList;

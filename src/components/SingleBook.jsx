@@ -1,37 +1,56 @@
+// import { Component } from "react";
+// import { Card } from "react-bootstrap";
+// // import CommentArea from './CommentArea'
+
+// class SingleBook extends Component {
+//   // state = {
+//   //   selected: false,
+//   // }
+
+//   render() {
+//     return (
+//       <>
+//         <Card
+//           // onClick={() => this.setState({ selected: !this.state.selected })}
+//           onClick={() => this.props.changeSelectedBook(this.props.book.asin)}
+//           style={{
+//             border: this.props.selectedBook === this.props.book.asin ? "3px solid red" : "none",
+//           }}
+//         >
+//           <Card.Img variant="top" src={this.props.book.img} />
+//           <Card.Body>
+//             <Card.Title style={{ color: "black" }}>{this.props.book.title}</Card.Title>
+//           </Card.Body>
+//         </Card>
+//         {/* {this.state.selected && <CommentArea asin={this.props.book.asin} />} */}
+//       </>
+//     );
+//   }
+// }
+
+// export default SingleBook;
+
 import React from "react";
-import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import CommentArea from "./CommentArea";
+import { Card } from "react-bootstrap";
+// import CommentArea from './CommentArea'
 
-class SingleBook extends React.Component {
-  state = { selected: false };
-
-  render() {
-    const { asin, img, title, price } = this.props.book;
-
-    return (
-      <Col xs={12} md={6} lg={3} className="my-3" key={asin}>
-        <Card>
-          <Card.Img variant="top" src={img} style={{ height: "15rem", objectFit: "contain" }} />
-          <Card.Body>
-            <Card.Title>{title}</Card.Title>
-            <Card.Text>{price}€</Card.Text>
-            <Button
-              variant="dark"
-              style={{ border: this.state.selected ? "2px solid red" : "1px solid black", height: "100%" }}
-              onClick={() => {
-                this.setState({ selected: !this.state.selected });
-              }}
-            >
-              Acquista
-            </Button>
-            {this.state.selected && <CommentArea asin={asin} />}
-          </Card.Body>
-        </Card>
-      </Col>
-    );
-  }
-}
+const SingleBook = (props) => {
+  return (
+    <>
+      <Card
+        onClick={() => props.changeSelectedBook(props.book.asin)}
+        style={{
+          border: props.selectedBook === props.book.asin ? "3px solid red" : "none",
+        }}
+      >
+        <Card.Img variant="top" src={props.book.img} style={{ objectFit: "contain", height: "20rem" }} />
+        <Card.Body>
+          <Card.Title style={{ color: "black" }}>{props.book.title}</Card.Title>
+        </Card.Body>
+      </Card>
+      {/* {state.selected && <CommentArea asin={props.book.asin} />} */}
+    </>
+  );
+};
 
 export default SingleBook;

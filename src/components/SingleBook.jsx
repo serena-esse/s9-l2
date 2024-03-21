@@ -43,7 +43,12 @@ const SingleBook = (props) => {
           border: props.selectedBook === props.book.asin ? "3px solid red" : "none",
         }}
       >
-        <Card.Img variant="top" src={props.book.img} style={{ objectFit: "contain", height: "20rem" }} />
+        <Card.Img
+          variant="top"
+          src={props.book.img}
+          style={{ objectFit: "contain", height: "20rem" }}
+          alt={"book-cover" + props.book.title}
+        />
         <Card.Body>
           <Card.Title style={{ color: "black" }}>{props.book.title}</Card.Title>
         </Card.Body>
